@@ -1,0 +1,6 @@
+    //this.Odroid( p1,p2,p3 ) { return prompt( "#", "App.Odroid(\f"+p1+"\f"+p2+"\f"+p3 ); }
+  // this._Extract( p1 ) { prompt( "#", "App._Extract("+p1 ); }
+  this.SetAutoStart( appName ) { prompt( "#", "App.SetAutoStart(\f"+appName); }
+  this.SetAutoWifi( auto ) { prompt( "#", "App.SetAutoWifi(\f"+auto); }
+getType() { return "DsApp"; }
+
