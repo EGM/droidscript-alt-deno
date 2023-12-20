@@ -1,13 +1,28 @@
-import List from "./src/list.ts";
 
 function _GetObjects() {
   throw new Error("Function not implemented.");
+}
+interface DSObject {
+  id: string|null;
 }
 class Lay {
   constructor(_id: string) {
     throw new Error("Function not implemented.");
   }
 }
+class App {
+  Debug(s: string) {}
+  SendIntent(
+    p1: string | null,
+    p2: string | null,
+    p3: string | null,
+    p4: string | null,
+    p5: string | null,
+    p6: string | null,
+    p7: string | null,
+  ) {}
+}
+const app = new App();
 
 export default class Alt {
   data: object;
@@ -15,14 +30,14 @@ export default class Alt {
   constructor() {
     this.data = {};
   }
-  addDrawer(layout: any, side: string, width: string, grabWidth: string) {
+  addDrawer(layout: DSObject, side: string, width: string, grabWidth: string) {
     prompt(
       "#",
       "App.AddDrawer(\f" + layout.id + "\f" + side + "\f" + width + "\f" +
         grabWidth,
     );
   }
-  addLayout(layout: any, type: string, options: string) {
+  addLayout(layout: DSObject, type: string, options: string) {
     if (!type) prompt("#", "App.AddLayout(" + layout.id);
     else {
       const ret = prompt(
@@ -65,117 +80,140 @@ export default class Alt {
   cancelJob() {
     prompt("#", "App.CancelJob(");
   }
-  checkLicense(key:string) {
+  checkLicense(key: string) {
     prompt("#", "App.CheckLicense(\f" + key);
   }
-  checkPermission(name:string) {
+  checkPermission(name: string) {
     return prompt("#", "App.CheckPermission(\f" + name);
   }
-  chooseAccount(callback:Function) {
+  chooseAccount(callback: Function) {
     prompt("#", "App.ChooseAccount(\f" + _Cbm(callback));
   }
-  chooseContact(type:string, callback:Function) {
+  chooseContact(type: string, callback: Function) {
     prompt("#", "App.ChooseContact(\f" + type + "\f" + _Cbm(callback));
   }
-  chooseFile(msg:string, type:string, callback:Function, fldr:string, options:string) {
+  chooseFile(
+    msg: string,
+    type: string,
+    callback: Function,
+    fldr: string,
+    options: string,
+  ) {
     prompt(
       "#",
       "App.ChooseFile(\f" + msg + "\f" + type + "\f" + _Cbm(callback) + "\f" +
         fldr + "\f" + options,
     );
   }
-  chooseImage(options:string, callback:Function) {
+  chooseImage(options: string, callback: Function) {
     prompt("#", "App.ChooseImage(\f" + options + "\f" + _Cbm(callback));
   }
   clearCookies() {
     prompt("#", "App.ClearCookies(");
   }
-  clearData(file:string) {
+  clearData(file: string) {
     prompt("#", "App.ClearData(\f" + file);
   }
-  clearValue(name:string, file:string) {
+  clearValue(name: string, file: string) {
     prompt("#", "App.ClearValue(\f" + name + "\f" + file);
   }
-  closeDrawer(side:string) {
+  closeDrawer(side: string) {
     prompt("#", "App.CloseDrawer(\f" + side);
   }
-  copyFile(src:string, dest:string) {
+  copyFile(src: string, dest: string) {
     prompt("#", "App.CopyFile(" + src + "\f" + dest);
   }
-  copyFolder(src:string, dest:string, overwrite:string, filter:string) {
+  copyFolder(src: string, dest: string, overwrite: string, filter: string) {
     prompt(
       "#",
       "App.CopyFolder(\f" + src + "\f" + dest + "\f" + overwrite + "\f" +
         filter,
     );
   }
-  createDebug(options:string) {
+  createDebug(options: string) {
     prompt("#", "App.CreateDebug(\f" + options);
   }
-  createShortcut(name:string, iconFile:string, file:string, options:string) {
+  createShortcut(
+    name: string,
+    iconFile: string,
+    file: string,
+    options: string,
+  ) {
     prompt(
       "#",
       "App.CreateShortcut(\f" + name + "\f" + iconFile + "\f" + file + "\f" +
         options,
     );
   }
-  debug(msg:string|object) {
+  debug(msg: string | object) {
     prompt(
       "#",
       "App.Debug(\f" + (typeof msg == "object" ? JSON.stringify(msg) : msg),
     );
   }
-  deleteDatabase(name:string) {
+  deleteDatabase(name: string) {
     prompt("#", "App.DeleteDatabase(\f" + name);
   }
-  deleteFile(file:string) {
+  deleteFile(file: string) {
     prompt("#", "App.DeleteFile(" + file);
   }
-  deleteFolder(fldr:string) {
+  deleteFolder(fldr: string) {
     prompt("#", "App.DeleteFolder(" + fldr);
   }
-  destroyLayout(layout:any) {
+  destroyLayout(layout: DSObject) {
     prompt("#", "App.DestroyLayout(" + layout.id);
   }
-  disableKeys(keyList:string) {
+  disableKeys(keyList: string) {
     prompt("#", "App.DisableKeys(\f" + keyList);
   }
-  disableTouch(disable:boolean) {
+  disableTouch(disable: boolean) {
     prompt("#", "App.DisableTouch(\f" + disable);
   }
-  discoverBtDevices(filter:string, onFound:Function, onComplete:Function) {
+  discoverBtDevices(filter: string, onFound: Function, onComplete: Function) {
     prompt(
       "#",
       "App.DiscoverBtDevices(\f" + filter + "\f" + _Cbm(onFound) + "\f" +
         _Cbm(onComplete),
     );
   }
-  downloadFile(src:string, dest:string, title:string, desc:string, options:string) {
+  downloadFile(
+    src: string,
+    dest: string,
+    title: string,
+    desc: string,
+    options: string,
+  ) {
     prompt(
       "#",
       "App.DownloadFile(\f" + src + "\f" + dest + "\f" + title + "\f" + desc +
         "\f" + options,
     );
   }
-  enableBackKey(enable:boolean) {
+  enableBackKey(enable: boolean) {
     prompt("#", "App.EnableBackKey(" + enable);
   }
-  error(msg:string, line:string, file:string, quit:string) {
+  error(msg: string, line: string, file: string, quit: string) {
     prompt("#", "App.Error(\f" + msg + "\f" + line + "\f" + file + "\f" + quit);
   }
-  execute(js:string) {
+  execute(js: string) {
     prompt("#", "App.Execute(" + js);
   }
-  exit(kill:string) {
+  exit(kill: string) {
     prompt("#", "App.Exit(" + kill);
   }
-  extExec(name:string, file:string, args:string, options:string) {
+  extExec(name: string, file: string, args: string, options: string) {
     return prompt(
       "#",
       "App.ExtExec(\f" + name + "\f" + file + "\f" + args + "\f" + options,
     );
   }
-  extractAssets(src:string, dest:string, overwrite:string, options:string, filter:string) {
+  extractAssets(
+    src: string,
+    dest: string,
+    overwrite: string,
+    options: string,
+    filter: string,
+  ) {
     prompt(
       "#",
       "App.ExtractAssets(\f" + src + "\f" + dest + "\f" + overwrite + "\f" +
@@ -185,10 +223,10 @@ export default class Alt {
   extractPlugins() {
     prompt("#", "App.ExtractPlugins(\f");
   }
-  fileExists(file:string) {
+  fileExists(file: string) {
     return prompt("#", "App.FileExists(" + file) == "true";
   }
-  folderExists(fldr:string) {
+  folderExists(fldr: string) {
     return prompt("#", "App.FolderExists(" + fldr) == "true";
   }
   getAccessibility() {
@@ -480,174 +518,717 @@ export default class Alt {
   getVolume = function (stream: string) {
     return parseFloat(prompt("#", "App.GetVolume(\f" + stream));
   };
-  goToSleep() { prompt( "#", "App.GoToSleep(" ); }
-hasSoftNav() { return prompt( "#", "App.HasSoftNav(" )=="true"; }
-hide() { prompt( "#", "App.Hide(" ); }
-hideKeyboard() { prompt( "#", "App.HideKeyboard(" ); }
-hideProgress() { prompt( "#", "App.HideProgress(" ); }
-hideProgressBar() { prompt( "#", "App.HideProgressBar(" ); }
-httpRequest( type:string,baseUrl:string,path:string,params:string,callback:string,headers:string ) { prompt( "#", "App.HttpRequest(\f"+type+"\f"+baseUrl+"\f"+path+"\f"+params+"\f"+_Cbm(callback)+"\f"+headers); }
-inIDE() { return prompt( "#", "App.InIDE(" )=="true"; }
-installApp( apkFile:string,callback:Function,options:string ) { prompt( "#", "App.InstallApp(\f"+apkFile+"\f"+_Cbm(callback)+"\f"+options ); }
-installWallpaper( packageName:string,className:string ) { prompt( "#", "App.InstallWallpaper\f"+packageName+"\f"+className ); }
-isAPK() { return prompt( "#", "App.IsAPK(" )=="true"; }
-isAppInstalled( packageName:string ) { return prompt( "#", "App.IsAppInstalled(\f"+packageName )=="true"; }
-isBatteryOptimized() { return prompt( "#", "App.IsBatteryOptimized(" )=="true"; }
-isBluetoothEnabled() { return prompt( "#", "App.IsBluetoothEnabled(" )=="true"; }
-isBluetoothOn() { return prompt( "#", "App.IsBluetoothOn(" )=="true"; }
-isBtDevicePaired( name:string ) { return prompt( "#", "App.IsBtDevicePaired(\f"+name )=="true"; }
-isCharging() { return prompt( "#", "App.IsCharging(" )=="true"; }
-isChrome() { return prompt( "#", "App.IsChrome(" )=="true"; }
-isConnected() { return prompt( "#", "App.IsConnected(" )=="true"; }
-isDebugEnabled() { return _dbg?true:false; }
-isDebugVisible() { return prompt( "#", "App.IsDebugVisible(" )=="true"; }
-isDebugging() { return prompt( "#", "App.IsDebugging(" )=="true"; }
-isEngine() { return prompt( "#", "App.IsEngine(" )=="true"; }
-isFolder( fldr:string ) { return prompt( "#", "App.IsFolder("+fldr )=="true"; }
-isKeyboardShown() { return prompt( "#", "App.IsKeyboardShown(" )=="true"; }
-isLocationEnabled( types:string ) { return prompt( "#", "App.IsLocationEnabled(\f"+types )=="true"; }
-isNavBarOnRight() { return prompt( "#", "App.IsNavBarOnRight(" )=="true"; }
-isNewVersion() { return prompt( "#", "App.IsNewVersion(" )=="true"; }
-isPortrait() { return prompt( "#", "App.GetOrientation(" )=="Portrait"; }
-isPremium() { return prompt( "#", "App.IsPremium(" )=="true"; }
-isScoped() { return prompt( "#", "App.IsScoped(" )=="true"; }
-isScreenOn() { return prompt( "#", "App.IsScreenOn(" )=="true"; }
-isService() { return prompt( "#", "App.IsService(" )=="true"; }
-isStarted() { return prompt( "#", "App.IsStarted(" )=="true"; }
-isTV() { return prompt( "#", "App.IsTV(" )=="true"; }
-isTablet() { return prompt( "#", "App.IsTablet(" )=="true"; }
-isWifiApEnabled() { return prompt( "#", "App.IsWifiApEnabled(" )=="true"; }
-isWifiEnabled() { return prompt( "#", "App.IsWifiEnabled(" )=="true"; }
-killApp( procId:string ) { prompt( "#", "App.KillApp("+procId ); }
-launchApp( packageName:string,noPlay:string ) { prompt( "#", "App.LaunchApp(\f"+packageName+"\f"+noPlay ); }
-listFolder( path:string,filter:string,limit:string,options:string ) { return eval(prompt( "#", "App.ListFolder(\f"+path+"\f"+filter+"\f"+limit+"\f"+options )); }
-listPermissions( type:string ) { return prompt( "#", "App.ListPermissions(\f"+type ); }
-loadBoolean( name:string,dflt:string,file:string ) { return (prompt( "#", "App.LoadBoolean("+name+"\f"+dflt+"\f"+file )=="true"); }
-loadJson(name:string,dflt:string,file:string) { try { return JSON.parse(prompt("#","App.LoadText("+name+"\f"+dflt+"\f"+file)); } catch(e) { app.Debug("WARNING: app.LoadJson Failed: "+e); }, }
-loadNumber( name:string,dflt:string,file:string ) { return parseFloat(prompt( "#", "App.LoadNumber("+name+"\f"+dflt+"\f"+file )); }
-loadPlugin( url:string ) { _LoadPlugin( url ); }
-loadScript( url:string, callback:Function ) { _LoadScript( url, callback ); }
-loadText( name:string,dflt:string,file:string ) { return prompt( "#", "App.LoadText("+name+"\f"+dflt+"\f"+file ); }
-lock() { prompt( "#", "App.Lock(" ); }
-lockDrawer( side:string ) { prompt( "#", "App.LockDrawer(\f"+side ); }
-makeFolder( fldr:string ) { prompt( "#", "App.MakeFolder("+fldr ); }
-openDrawer( side:string ) { prompt( "#", "App.OpenDrawer(\f"+side ); }
-openFile( file:string,type:string,choose:string ) { prompt( "#", "App.OpenFile(\f"+file+"\f"+type+"\f"+choose ); }
-openUrl( url:string,type:string,choose:string ) { prompt( "#", "App.OpenUrl(\f"+url+"\f"+type+"\f"+choose ); }
-pairBtDevice( address:string,callback:Function ) { prompt( "#", "App.PairBtDevice(\f"+address+"\f"+_Cbm(callback) ); }
-path2Uri( path:string ) { return prompt( "#", "App.Path2Uri(\f"+path); }
-pinScreen( enable:boolean ) { prompt( "#", "App.PinScreen(\f"+enable); }
-playRingtone( type:string ) { prompt( "#", "App.PlayRingtone(\f"+type ); }
-preventScreenLock( mode:string ) { prompt( "#", "App.PreventScreenLock("+mode ); }
-preventWifiSleep() { prompt( "#", "App.PreventWifiSleep(" ); }
-queryContent( uri:string,columns:string,select:string,args:string,sort:string ) { return eval(prompt( "#", "App.QueryContent(\f"+uri+"\f"+columns+"\f"+select+"\f"+args+"\f"+sort)); }
-quit( msg:string,title:string,options:string ) { prompt( "#", "App.Quit(\f"+msg+"\f"+title+"\f"+options ); }
-readFile( file:string,encoding:string ) { return prompt( "#", "App.ReadFile(\f"+file+"\f"+encoding ); }
-readFileData( file:string,mode:string ) { return JSON.parse(prompt( "#", "App.ReadFileData(\f"+file+"\f"+mode )); }
-realPath( path:string ) { return prompt( "#", "App.RealPath(\f"+path); }
-redirectAssets( dir:string ) { prompt( "#", "App.RedirectAssets(\f"+dir ); }
-removeDrawer( side:string ) { prompt( "#", "App.RemoveDrawer(\f"+ side ); }
-removeLayout( layout:string ) { prompt( "#", "App.RemoveLayout("+ layout.id ); }
-removePermission( uri:string ) { return prompt( "#", "App.RemovePermission(\f"+uri ); }
-renameFile( src:string,dest:string ) { prompt( "#", "App.RenameFile(\f"+src+"\f"+dest); }
-renameFolder( src:string,dest:string ) { prompt( "#", "App.RenameFile(\f"+src+"\f"+dest); }
-replaceInFile( file:string,txt:string,rep:string,options:string ) { prompt( "#", "App.ReplaceInFile(\f"+file+"\f"+txt+"\f"+rep+"\f"+options); }
-saveBoolean( name:string,value:string,file:string ) { prompt( "#", "App.SaveBoolean("+name+"\f"+value+"\f"+file ); }
-saveCookies() { prompt( "#", "App.SaveCookies(" ); }
-saveJson(name:string,data:string,file:string) { try { prompt("#","App.SaveText("+name+"\f"+JSON.stringify(data)+"\f"+file); }, catch(e) { app.Debug("WARNING: app.SaveJson Failed: "+e); }, }
-saveNumber( name:string,value:string,file:string ) { prompt( "#", "App.SaveNumber("+name+"\f"+value+"\f"+file ); }
-saveText( name:string,value:string,file:string ) { prompt( "#", "App.SaveText("+name+"\f"+value+"\f"+file ); }
-scanFile( file:string ) { prompt( "#", "App.ScanFile(\f"+file); }
-scheduleJob( delay:string,options:string ) { prompt( "#", "App.ScheduleJob(\f"+delay+"\f"+options ); }
-screenShot( fileName:string,quality:string ) { prompt( "#", "App.ScreenShot(\f"+fileName+"\f"+quality ); }
-script( file:string, noDefer:boolean ) { _LoadScriptSync( file, noDefer?false:true ); }
-sendFile( file:string,subject:string,text:string,choose:string ) { prompt( "#", "App.SendFile(\f"+file+"\f"+subject+"\f"+text+"\f"+choose ); }
-sendImage( file:string,choose:string ) { prompt( "#", "App.SendImage(\f"+file+"\f"+choose ); }
-sendIntent( packageName:string,className:string,action:string,category:string,uri:string,type:string,extras:string,options:string,callback:Function ) { prompt( "#", "App.SendIntent(\f"+packageName+"\f"+className+"\f"+action+"\f"+category+"\f"+uri+"\f"+type+"\f"+extras+"\f"+options+"\f"+_Cbm(callback) ); }
-sendMail( address:string,subject:string,body:string,attach:string,type:string,options:string ) { prompt( "#", "App.SendMail(\f"+address+"\f"+subject+"\f"+body+"\f"+attach+"\f"+type+"\f"+options ); }
-sendMessage( msg:string ) { prompt( "#", "App.SendMessage(\f"+msg ); }
-sendSMS( msg:string,number:string ){ app.SendIntent(null,null,"android.intent.action.SENDTO",null,smsto:+number,null,JSON.stringify([{name:"sms_body",type:"string",value:msg}])); }
-sendText( text:string,subject:string,choose:string ) { prompt( "#", "App.SendText(\f"+text+"\f"+subject+"\f"+choose ); }
-setAlarm( type:string,id:string,callback:string,time:string,interval:string,options:string ) { return prompt( "#", "App.SetAlarm(\f"+type+"\f"+id+"\f"+_Cbm(callback)+"\f"+time+"\f"+interval+"\f"+options); }
-setAutoBoot( auto:string ) { prompt( "#", "App.SetAutoBoot(\f"+auto); }
-setBackColor( clr:string ) { prompt( "#", "App.SetBackColor(\f"+clr ); }
-setBluetoothEnabled( enable:boolean ) { prompt( "#", "App.SetBluetoothEnabled(\f"+enable ); }
-setClipboardText( txt:string ) { prompt( "#", "App.SetClipboardText("+txt ); }
-setData( name:string,value:string ) { prompt( "#", "App.SetData(\f"+name+"\f"+value ); }
-setDebug( switches:boolean ) { prompt( "#", "_UseDbg(\f"+switches ); _dbg=switches; }
-setDebugEnabled( enable:boolean ) { prompt( "#", "_UseDbg(\f"+enable ); _dbg=enable; }
-setDensity( dpi:string ) { prompt( "#", "App.SetDensity(\f"+dpi ); }
-setErrorFilter( filter:string ) { prompt( "#", "App.SetErrorFilter(\f"+filter ); }
-setInBackground() { prompt( "#", "App.SetInBackground(\f" ); }
-setInForeground( title:string,text:string,largeIcon:string,smallIcon:string,importance:string ) { prompt( "#", "App.SetInForeground(\f"+title+"\f"+text+"\f"+largeIcon+"\f"+smallIcon+"\f"+importance ); }
-setJoystickOptions( options:string ) { prompt( "#", "App.SetJoystickOptions(\f"+options ); }
-setKioskMode( mode:string,enable:string,options:string,packages:string ) { prompt( "#", "App.SetKioskMode(\f"+mode+"\f"+enable+"\f"+options+"\f"+packages); }
-setMenu( list,iconPath ) { prompt( "#", "App.SetMenu("+list+"\f"+iconPath ); }
-setMockLocation( lat,lng,accuracy,speed ) { prompt( "#", "App.SetMockLocation(\f"+lat+"\f"+lng+"\f"+accuracy+"\f"+speed ); }
-setNavBarColor( clr ) { prompt( "#", "App.SetNavBarColor(\f"+clr ); }
-setOnBroadcast( callback,action ) { prompt( "#", "App.SetOnBroadcast(\f"+_Cbm(callback)+"\f"+action ); }
-setOnDebug( callback ) { prompt( "#", "App.SetOnDebug(\f"+_Cbm(callback) ); }
-setOnError( callback ) { prompt( "#", "App.SetOnError(\f"+_Cbm(callback) ); }
-setOnKey( callback ) { prompt( "#", "App.SetOnKey(\f"+_Cbm(callback) ); }
-setOnShowKeyboard( callback ) { prompt( "#", "App.SetOnShowKeyboard(\f"+_Cbm(callback) ); }
-setOnWifiChange( callback ) { prompt( "#", "App.SetOnWifiChange(\f"+_Cbm(callback) ); }
-setOptions( options ) { prompt( "#", "App.SetOptions(\f"+options ); }
-setOrientation( orient,callback ) { prompt( "#", "App.SetOrientation(\f"+orient+"\f"+_Cbm(callback) ); }
-setPosition( left,top,width,height,options ) { prompt( "#", "App.SetPosition(\f"+left+"\f"+top+"\f"+width+"\f"+height+"\f"+options ); }
-setPriority( level ) { prompt( "#", "App.SetPriority(\f"+level ); }
-setRingerMode( mode ) { prompt( "#", "App.SetRingerMode(\f"+mode ); }
-setScreenBrightness( level ) { prompt( "#", "App.SetScreenBrightness(\f"+level); }
-setScreenMode( mode ) { prompt( "#", "App.SetScreenMode(\f"+mode ); }
-setSharedApp( name ) { prompt( "#", "App.SetSharedApp("+name ); }
-setSpeakerPhone( on ) { prompt( "#", "App.SetSpeakerPhone(\f"+on ); }
-setStatusBarColor( clr ) { prompt( "#", "App.SetStatusBarColor(\f"+clr ); }
-setTheme( theme ) { prompt( "#", "App.SetTheme(\f"+(theme?theme.id:null) ); }
-setTitle( title ) { prompt( "#", "App.SetTitle("+title ); }
-setUserAgent( agent,options ) { prompt( "#", "App.SetUserAgent(\f"+agent+"\f"+options ); }
-setUserCreds( name,password ) { prompt( "#", "App.SetUserCreds(\f"+name+"\f"+password ); }
-setVolume( stream,level,options ) { prompt( "#", "App.SetVolume(\f"+stream+"\f"+level+"\f"+options ); }
-setWifiApEnabled( enable,ssid,key ) { prompt( "#", "App.SetWifiApEnabled(\f"+enable+"\f"+ssid+"\f"+key ); }
-setWifiEnabled( enable ) { prompt( "#", "App.SetWifiEnabled(\f"+enable ); }
-show() { prompt( "#", "App.Show(" ); }
-showBatterySettings() { prompt( "#", "App.ShowBatterySettings(" ); }
-showDebug( show,options ) { prompt( "#", "App.ShowDebug(\f"+show+"\f"+options ); }
-showKeyboard( obj ) { return prompt( "#", "App.ShowKeyboard(\f"+obj.id )=="true"; }
-showMenu() { prompt( "#", "App.ShowMenu(" ); }
-showPopup( msg,options ) { prompt( "#", "App.ShowPopup("+msg+"\f"+options ); }
-showProgress( msg,options ) { prompt( "#", "App.ShowProgress(\f"+msg+"\f"+options ); }
-showProgressBar( title,percent,options ) { prompt( "#", "App.ShowProgressBar(\f"+title+"\f"+percent+"\f"+options ); }
-simulateDrag( obj,x1,y1,x2,y2,step,pause ) { prompt( "#", "App.SimulateDrag(\f"+obj.id+"\f"+x1+"\f"+y1+"\f"+x2+"\f"+y2+"\f"+step+"\f"+pause ); }
-simulateKey( obj,keyName,modifiers,pause ) { prompt( "#", "App.SimulateKey(\f"+obj.id+"\f"+keyName+"\f"+modifiers+"\f"+pause ); }
-simulateScroll( obj,x,y,dx,dy,count,fling ) { prompt( "#", "App.SimulateScroll(\f"+obj.id+"\f"+x+"\f"+y+"\f"+dx+"\f"+dy+"\f"+count+"\f"+fling ); }
-simulateTouch( obj,x,y,dir ) { prompt( "#", "App.SimulateTouch(\f"+obj.id+"\f"+x+"\f"+y+"\f"+dir ); }
-startApp( file,options,intent ) { prompt( "#", "App.StartApp(\f"+file+"\f"+options+"\f"+intent ); }
-startDebugServer() { prompt( "#", "App.StartDebugServer(" ); }
-startService( packageName,className ) { prompt( "#", "App.StartService(\f"+packageName+"\f"+className ); }
-stopApp( name ) { prompt( "#", "App.StopApp("+name ); }
-stopDebugServer() { prompt( "#", "App.StopDebugServer(" ); }
-stopService() { prompt( "#", "App.StopService(" ); }
-sysExec( cmd,options,maxRead,timeout ) { return prompt( "#", "App.SysExec(\f"+cmd+"\f"+options+"\f"+maxRead+"\f"+timeout ); }
-textToSpeech( text,pitch,rate,callback,stream,locale,engine ) { prompt( "#", "App.TextToSpeech(\f"+text+"\f"+pitch+"\f"+rate+"\f"+_Cbm(callback)+"\f"+stream+"\f"+locale+"\f"+engine ); }
-toBack() { prompt( "#", "App.ToBack(" ); }
-toFront() { prompt( "#", "App.ToFront(" ); }
-translate( cancel,ok ) { prompt( "#", "App.Translate(\f"+cancel+"\f"+ok ); }
-unlock() { prompt( "#", "App.Unlock(" ); }
-unlockDrawer( side ) { prompt( "#", "App.UnlockDrawer(\f"+side ); }
-unpairBtDevice( address,callback ) { prompt( "#", "App.UnpairBtDevice(\f"+address+"\f"+_Cbm(callback) ); }
-unzipFile( src,dest,options ) { prompt( "#", "App.UnzipFile(\f"+src+"\f"+dest+"\f"+options); }
-updateProgressBar( percent,options ) { prompt( "#", "App.UpdateProgressBar(\f"+percent+"\f"+options ); }
-updateUI( ms ) { prompt( "#", "_DoEvents(\f"+ms ); }
-uploadFile( url,file,name,callback ) { prompt( "#", "App.UploadFile(\f"+url+"\f"+file+"\f"+name+"\f"+_Cbm(callback) ); }
-uri2Path( uri,options ) { return prompt( "#", "App.Uri2Path(\f"+uri+"\f"+options); }
-vibrate( pattern ) { prompt( "#", "App.Vibrate("+pattern ); }
-wait( secs,doEvents ) { prompt( "#", "App.Wait(\f"+secs+"\f"+doEvents ); }
-wakeUp() { prompt( "#", "App.WakeUp(" ); }
-walkFolder( path,filter,depth,limit,options ) { return JSON.parse(prompt( "#", "App.WalkFolder(\f"+path+"\f"+filter+"\f"+depth+"\f"+limit+"\f"+options )); }
-wifiConnect( ssid,key ) { prompt( "#", "App.WifiConnect(\f"+ssid+"\f"+key ); }
-wifiScan( callback,options ) { prompt( "#", "App.WifiScan(\f"+_Cbm(callback)+"\f"+options ); }
-writeFile( file,text,mode,encoding ) { prompt( "#", "App.WriteFile(\f"+file+"\f"+text+"\f"+mode+"\f"+encoding ); }
-zipFile( src,dest,options ) { prompt( "#", "App.ZipFile(\f"+src+"\f"+dest+"\f"+options); }
-zipFolder( src,dest,options ) { prompt( "#", "App.ZipFile(\f"+src+"\f"+dest+"\f"+options); }
+  goToSleep() {
+    prompt("#", "App.GoToSleep(");
+  }
+  hasSoftNav() {
+    return prompt("#", "App.HasSoftNav(") == "true";
+  }
+  hide() {
+    prompt("#", "App.Hide(");
+  }
+  hideKeyboard() {
+    prompt("#", "App.HideKeyboard(");
+  }
+  hideProgress() {
+    prompt("#", "App.HideProgress(");
+  }
+  hideProgressBar() {
+    prompt("#", "App.HideProgressBar(");
+  }
+  httpRequest(
+    type: string,
+    baseUrl: string,
+    path: string,
+    params: string,
+    callback: Function,
+    headers: string,
+  ) {
+    prompt(
+      "#",
+      "App.HttpRequest(\f" + type + "\f" + baseUrl + "\f" + path + "\f" +
+        params + "\f" + _Cbm(callback) + "\f" + headers,
+    );
+  }
+  inIDE() {
+    return prompt("#", "App.InIDE(") == "true";
+  }
+  installApp(apkFile: string, callback: Function, options: string) {
+    prompt(
+      "#",
+      "App.InstallApp(\f" + apkFile + "\f" + _Cbm(callback) + "\f" + options,
+    );
+  }
+  installWallpaper(packageName: string, className: string) {
+    prompt("#", "App.InstallWallpaper\f" + packageName + "\f" + className);
+  }
+  isAPK() {
+    return prompt("#", "App.IsAPK(") == "true";
+  }
+  isAppInstalled(packageName: string) {
+    return prompt("#", "App.IsAppInstalled(\f" + packageName) == "true";
+  }
+  isBatteryOptimized() {
+    return prompt("#", "App.IsBatteryOptimized(") == "true";
+  }
+  isBluetoothEnabled() {
+    return prompt("#", "App.IsBluetoothEnabled(") == "true";
+  }
+  isBluetoothOn() {
+    return prompt("#", "App.IsBluetoothOn(") == "true";
+  }
+  isBtDevicePaired(name: string) {
+    return prompt("#", "App.IsBtDevicePaired(\f" + name) == "true";
+  }
+  isCharging() {
+    return prompt("#", "App.IsCharging(") == "true";
+  }
+  isChrome() {
+    return prompt("#", "App.IsChrome(") == "true";
+  }
+  isConnected() {
+    return prompt("#", "App.IsConnected(") == "true";
+  }
+  isDebugEnabled() {
+    return _dbg ? true : false;
+  }
+  isDebugVisible() {
+    return prompt("#", "App.IsDebugVisible(") == "true";
+  }
+  isDebugging() {
+    return prompt("#", "App.IsDebugging(") == "true";
+  }
+  isEngine() {
+    return prompt("#", "App.IsEngine(") == "true";
+  }
+  isFolder(fldr: string) {
+    return prompt("#", "App.IsFolder(" + fldr) == "true";
+  }
+  isKeyboardShown() {
+    return prompt("#", "App.IsKeyboardShown(") == "true";
+  }
+  isLocationEnabled(types: string) {
+    return prompt("#", "App.IsLocationEnabled(\f" + types) == "true";
+  }
+  isNavBarOnRight() {
+    return prompt("#", "App.IsNavBarOnRight(") == "true";
+  }
+  isNewVersion() {
+    return prompt("#", "App.IsNewVersion(") == "true";
+  }
+  isPortrait() {
+    return prompt("#", "App.GetOrientation(") == "Portrait";
+  }
+  isPremium() {
+    return prompt("#", "App.IsPremium(") == "true";
+  }
+  isScoped() {
+    return prompt("#", "App.IsScoped(") == "true";
+  }
+  isScreenOn() {
+    return prompt("#", "App.IsScreenOn(") == "true";
+  }
+  isService() {
+    return prompt("#", "App.IsService(") == "true";
+  }
+  isStarted() {
+    return prompt("#", "App.IsStarted(") == "true";
+  }
+  isTV() {
+    return prompt("#", "App.IsTV(") == "true";
+  }
+  isTablet() {
+    return prompt("#", "App.IsTablet(") == "true";
+  }
+  isWifiApEnabled() {
+    return prompt("#", "App.IsWifiApEnabled(") == "true";
+  }
+  isWifiEnabled() {
+    return prompt("#", "App.IsWifiEnabled(") == "true";
+  }
+  killApp(procId: string) {
+    prompt("#", "App.KillApp(" + procId);
+  }
+  launchApp(packageName: string, noPlay: string) {
+    prompt("#", "App.LaunchApp(\f" + packageName + "\f" + noPlay);
+  }
+  listFolder(path: string, filter: string, limit: string, options: string) {
+    return eval(
+      prompt(
+        "#",
+        "App.ListFolder(\f" + path + "\f" + filter + "\f" + limit + "\f" +
+          options,
+      ),
+    );
+  }
+  listPermissions(type: string) {
+    return prompt("#", "App.ListPermissions(\f" + type);
+  }
+  loadBoolean(name: string, dflt: string, file: string) {
+    return (prompt(
+      "#",
+      "App.LoadBoolean(" + name + "\f" + dflt + "\f" + file,
+    ) == "true");
+  }
+  loadJson(name: string, dflt: string, file: string) {
+    try {
+      return JSON.parse(
+        prompt("#", "App.LoadText(" + name + "\f" + dflt + "\f" + file),
+      );
+    } catch (e) {
+      app.Debug("WARNING: app.LoadJson Failed: " + e);
+    }
+  }
+  loadNumber(name: string, dflt: string, file: string) {
+    return parseFloat(
+      prompt("#", "App.LoadNumber(" + name + "\f" + dflt + "\f" + file),
+    );
+  }
+  loadPlugin(url: string) {
+    _LoadPlugin(url);
+  }
+  loadScript(url: string, callback: Function) {
+    _LoadScript(url, callback);
+  }
+  loadText(name: string, dflt: string, file: string) {
+    return prompt("#", "App.LoadText(" + name + "\f" + dflt + "\f" + file);
+  }
+  lock() {
+    prompt("#", "App.Lock(");
+  }
+  lockDrawer(side: string) {
+    prompt("#", "App.LockDrawer(\f" + side);
+  }
+  makeFolder(fldr: string) {
+    prompt("#", "App.MakeFolder(" + fldr);
+  }
+  openDrawer(side: string) {
+    prompt("#", "App.OpenDrawer(\f" + side);
+  }
+  openFile(file: string, type: string, choose: string) {
+    prompt("#", "App.OpenFile(\f" + file + "\f" + type + "\f" + choose);
+  }
+  openUrl(url: string, type: string, choose: string) {
+    prompt("#", "App.OpenUrl(\f" + url + "\f" + type + "\f" + choose);
+  }
+  pairBtDevice(address: string, callback: Function) {
+    prompt("#", "App.PairBtDevice(\f" + address + "\f" + _Cbm(callback));
+  }
+  path2Uri(path: string) {
+    return prompt("#", "App.Path2Uri(\f" + path);
+  }
+  pinScreen(enable: boolean) {
+    prompt("#", "App.PinScreen(\f" + enable);
+  }
+  playRingtone(type: string) {
+    prompt("#", "App.PlayRingtone(\f" + type);
+  }
+  preventScreenLock(mode: string) {
+    prompt("#", "App.PreventScreenLock(" + mode);
+  }
+  preventWifiSleep() {
+    prompt("#", "App.PreventWifiSleep(");
+  }
+  queryContent(
+    uri: string,
+    columns: string,
+    select: string,
+    args: string,
+    sort: string,
+  ) {
+    return eval(
+      prompt(
+        "#",
+        "App.QueryContent(\f" + uri + "\f" + columns + "\f" + select + "\f" +
+          args + "\f" + sort,
+      ),
+    );
+  }
+  quit(msg: string, title: string, options: string) {
+    prompt("#", "App.Quit(\f" + msg + "\f" + title + "\f" + options);
+  }
+  readFile(file: string, encoding: string) {
+    return prompt("#", "App.ReadFile(\f" + file + "\f" + encoding);
+  }
+  readFileData(file: string, mode: string) {
+    return JSON.parse(prompt("#", "App.ReadFileData(\f" + file + "\f" + mode));
+  }
+  realPath(path: string) {
+    return prompt("#", "App.RealPath(\f" + path);
+  }
+  redirectAssets(dir: string) {
+    prompt("#", "App.RedirectAssets(\f" + dir);
+  }
+  removeDrawer(side: string) {
+    prompt("#", "App.RemoveDrawer(\f" + side);
+  }
+  removeLayout(layout: DSObject) {
+    prompt("#", "App.RemoveLayout(" + layout.id);
+  }
+  removePermission(uri: string) {
+    return prompt("#", "App.RemovePermission(\f" + uri);
+  }
+  renameFile(src: string, dest: string) {
+    prompt("#", "App.RenameFile(\f" + src + "\f" + dest);
+  }
+  renameFolder(src: string, dest: string) {
+    prompt("#", "App.RenameFile(\f" + src + "\f" + dest);
+  }
+  replaceInFile(file: string, txt: string, rep: string, options: string) {
+    prompt(
+      "#",
+      "App.ReplaceInFile(\f" + file + "\f" + txt + "\f" + rep + "\f" + options,
+    );
+  }
+  saveBoolean(name: string, value: string, file: string) {
+    prompt("#", "App.SaveBoolean(" + name + "\f" + value + "\f" + file);
+  }
+  saveCookies() {
+    prompt("#", "App.SaveCookies(");
+  }
+  saveJson(name: string, data: string, file: string) {
+    try {
+      prompt(
+        "#",
+        "App.SaveText(" + name + "\f" + JSON.stringify(data) + "\f" + file,
+      );
+    } catch (e) {
+      app.Debug("WARNING: app.SaveJson Failed: " + e);
+    }
+  }
+  saveNumber(name: string, value: string, file: string) {
+    prompt("#", "App.SaveNumber(" + name + "\f" + value + "\f" + file);
+  }
+  saveText(name: string, value: string, file: string) {
+    prompt("#", "App.SaveText(" + name + "\f" + value + "\f" + file);
+  }
+  scanFile(file: string) {
+    prompt("#", "App.ScanFile(\f" + file);
+  }
+  scheduleJob(delay: string, options: string) {
+    prompt("#", "App.ScheduleJob(\f" + delay + "\f" + options);
+  }
+  screenShot(fileName: string, quality: string) {
+    prompt("#", "App.ScreenShot(\f" + fileName + "\f" + quality);
+  }
+  //script( file:string, noDefer:boolean ) { _LoadScriptSync( file, noDefer?false:true ); }
+  sendFile(file: string, subject: string, text: string, choose: string) {
+    prompt(
+      "#",
+      "App.SendFile(\f" + file + "\f" + subject + "\f" + text + "\f" + choose,
+    );
+  }
+  sendImage(file: string, choose: string) {
+    prompt("#", "App.SendImage(\f" + file + "\f" + choose);
+  }
+  sendIntent(
+    packageName: string,
+    className: string,
+    action: string,
+    category: string,
+    uri: string,
+    type: string,
+    extras: string,
+    options: string,
+    callback: Function,
+  ) {
+    prompt(
+      "#",
+      "App.SendIntent(\f" + packageName + "\f" + className + "\f" + action +
+        "\f" + category + "\f" + uri + "\f" + type + "\f" + extras + "\f" +
+        options + "\f" + _Cbm(callback),
+    );
+  }
+  sendMail(
+    address: string,
+    subject: string,
+    body: string,
+    attach: string,
+    type: string,
+    options: string,
+  ) {
+    prompt(
+      "#",
+      "App.SendMail(\f" + address + "\f" + subject + "\f" + body + "\f" +
+        attach + "\f" + type + "\f" + options,
+    );
+  }
+  sendMessage(msg: string) {
+    prompt("#", "App.SendMessage(\f" + msg);
+  }
+  sendSMS(msg: string, number: string) {
+    app.SendIntent(
+      null,
+      null,
+      "android.intent.action.SENDTO",
+      null,
+      "smsto:" + number,
+      null,
+      JSON.stringify([{ name: "sms_body", type: "string", value: msg }]),
+    );
+  }
+  sendText(text: string, subject: string, choose: string) {
+    prompt("#", "App.SendText(\f" + text + "\f" + subject + "\f" + choose);
+  }
+  setAlarm(
+    type: string,
+    id: string,
+    callback: Function,
+    time: string,
+    interval: string,
+    options: string,
+  ) {
+    return prompt(
+      "#",
+      "App.SetAlarm(\f" + type + "\f" + id + "\f" + _Cbm(callback) + "\f" +
+        time + "\f" + interval + "\f" + options,
+    );
+  }
+  setAutoBoot(auto: string) {
+    prompt("#", "App.SetAutoBoot(\f" + auto);
+  }
+  setBackColor(clr: string) {
+    prompt("#", "App.SetBackColor(\f" + clr);
+  }
+  setBluetoothEnabled(enable: boolean) {
+    prompt("#", "App.SetBluetoothEnabled(\f" + enable);
+  }
+  setClipboardText(txt: string) {
+    prompt("#", "App.SetClipboardText(" + txt);
+  }
+  setData(name: string, value: string) {
+    prompt("#", "App.SetData(\f" + name + "\f" + value);
+  }
+  setDebug(switches: boolean) {
+    prompt("#", "_UseDbg(\f" + switches);
+    _dbg = switches;
+  }
+  setDebugEnabled(enable: boolean) {
+    prompt("#", "_UseDbg(\f" + enable);
+    _dbg = enable;
+  }
+  setDensity(dpi: string) {
+    prompt("#", "App.SetDensity(\f" + dpi);
+  }
+  setErrorFilter(filter: string) {
+    prompt("#", "App.SetErrorFilter(\f" + filter);
+  }
+  setInBackground() {
+    prompt("#", "App.SetInBackground(\f");
+  }
+  setInForeground(
+    title: string,
+    text: string,
+    largeIcon: string,
+    smallIcon: string,
+    importance: string,
+  ) {
+    prompt(
+      "#",
+      "App.SetInForeground(\f" + title + "\f" + text + "\f" + largeIcon + "\f" +
+        smallIcon + "\f" + importance,
+    );
+  }
+  setJoystickOptions(options: string) {
+    prompt("#", "App.SetJoystickOptions(\f" + options);
+  }
+  setKioskMode(
+    mode: string,
+    enable: string,
+    options: string,
+    packages: string,
+  ) {
+    prompt(
+      "#",
+      "App.SetKioskMode(\f" + mode + "\f" + enable + "\f" + options + "\f" +
+        packages,
+    );
+  }
+  setMenu(list: string, iconPath: string) {
+    prompt("#", "App.SetMenu(" + list + "\f" + iconPath);
+  }
+  setMockLocation(lat: string, lng: string, accuracy: string, speed: string) {
+    prompt(
+      "#",
+      "App.SetMockLocation(\f" + lat + "\f" + lng + "\f" + accuracy + "\f" +
+        speed,
+    );
+  }
+  setNavBarColor(clr: string) {
+    prompt("#", "App.SetNavBarColor(\f" + clr);
+  }
+  setOnBroadcast(callback: Function, action: string) {
+    prompt("#", "App.SetOnBroadcast(\f" + _Cbm(callback) + "\f" + action);
+  }
+  setOnDebug(callback: Function) {
+    prompt("#", "App.SetOnDebug(\f" + _Cbm(callback));
+  }
+  setOnError(callback: Function) {
+    prompt("#", "App.SetOnError(\f" + _Cbm(callback));
+  }
+  setOnKey(callback: Function) {
+    prompt("#", "App.SetOnKey(\f" + _Cbm(callback));
+  }
+  setOnShowKeyboard(callback: Function) {
+    prompt("#", "App.SetOnShowKeyboard(\f" + _Cbm(callback));
+  }
+  setOnWifiChange(callback: Function) {
+    prompt("#", "App.SetOnWifiChange(\f" + _Cbm(callback));
+  }
+  setOptions(options: string) {
+    prompt("#", "App.SetOptions(\f" + options);
+  }
+  setOrientation(orient: string, callback: Function) {
+    prompt("#", "App.SetOrientation(\f" + orient + "\f" + _Cbm(callback));
+  }
+  setPosition(
+    left: number,
+    top: string,
+    width: string,
+    height: string,
+    options: string,
+  ) {
+    prompt(
+      "#",
+      "App.SetPosition(\f" + left + "\f" + top + "\f" + width + "\f" + height +
+        "\f" + options,
+    );
+  }
+  setPriority(level: number) {
+    prompt("#", "App.SetPriority(\f" + level);
+  }
+  setRingerMode(mode: string) {
+    prompt("#", "App.SetRingerMode(\f" + mode);
+  }
+  setScreenBrightness(level: string) {
+    prompt("#", "App.SetScreenBrightness(\f" + level);
+  }
+  setScreenMode(mode: string) {
+    prompt("#", "App.SetScreenMode(\f" + mode);
+  }
+  setSharedApp(name: string) {
+    prompt("#", "App.SetSharedApp(" + name);
+  }
+  setSpeakerPhone(on: boolean) {
+    prompt("#", "App.SetSpeakerPhone(\f" + on);
+  }
+  setStatusBarColor(clr: string) {
+    prompt("#", "App.SetStatusBarColor(\f" + clr);
+  }
+  setTheme(theme: DSObject) {
+    prompt("#", "App.SetTheme(\f" + (theme ? theme.id : null));
+  }
+  setTitle(title: DSObject) {
+    prompt("#", "App.SetTitle(" + title);
+  }
+  setUserAgent(agent: string, options: string) {
+    prompt("#", "App.SetUserAgent(\f" + agent + "\f" + options);
+  }
+  setUserCreds(name: string, password: string) {
+    prompt("#", "App.SetUserCreds(\f" + name + "\f" + password);
+  }
+  setVolume(stream: string, level: string, options: string) {
+    prompt("#", "App.SetVolume(\f" + stream + "\f" + level + "\f" + options);
+  }
+  setWifiApEnabled(enable: string, ssid: string, key: string) {
+    prompt("#", "App.SetWifiApEnabled(\f" + enable + "\f" + ssid + "\f" + key);
+  }
+  setWifiEnabled(enable: boolean) {
+    prompt("#", "App.SetWifiEnabled(\f" + enable);
+  }
+  show() {
+    prompt("#", "App.Show(");
+  }
+  showBatterySettings() {
+    prompt("#", "App.ShowBatterySettings(");
+  }
+  showDebug(show: string, options: string) {
+    prompt("#", "App.ShowDebug(\f" + show + "\f" + options);
+  }
+  showKeyboard(obj: DSObject) {
+    return prompt("#", "App.ShowKeyboard(\f" + obj.id) == "true";
+  }
+  showMenu() {
+    prompt("#", "App.ShowMenu(");
+  }
+  showPopup(msg: string, options: string) {
+    prompt("#", "App.ShowPopup(" + msg + "\f" + options);
+  }
+  showProgress(msg: string, options: string) {
+    prompt("#", "App.ShowProgress(\f" + msg + "\f" + options);
+  }
+  showProgressBar(title: string, percent: string, options: string) {
+    prompt(
+      "#",
+      "App.ShowProgressBar(\f" + title + "\f" + percent + "\f" + options,
+    );
+  }
+  simulateDrag(
+    obj: DSObject,
+    x1: string,
+    y1: string,
+    x2: string,
+    y2: string,
+    step: string,
+    pause: string,
+  ) {
+    prompt(
+      "#",
+      "App.SimulateDrag(\f" + obj.id + "\f" + x1 + "\f" + y1 + "\f" + x2 +
+        "\f" + y2 + "\f" + step + "\f" + pause,
+    );
+  }
+  simulateKey(
+    obj: DSObject,
+    keyName: string,
+    modifiers: string,
+    pause: string,
+  ) {
+    prompt(
+      "#",
+      "App.SimulateKey(\f" + obj.id + "\f" + keyName + "\f" + modifiers + "\f" +
+        pause,
+    );
+  }
+  simulateScroll(
+    obj: DSObject,
+    x: string,
+    y: string,
+    dx: string,
+    dy: string,
+    count: string,
+    fling: string,
+  ) {
+    prompt(
+      "#",
+      "App.SimulateScroll(\f" + obj.id + "\f" + x + "\f" + y + "\f" + dx +
+        "\f" + dy + "\f" + count + "\f" + fling,
+    );
+  }
+  simulateTouch(obj: DSObject, x: string, y: string, dir: string) {
+    prompt(
+      "#",
+      "App.SimulateTouch(\f" + obj.id + "\f" + x + "\f" + y + "\f" + dir,
+    );
+  }
+  startApp(file: string, options: string, intent: string) {
+    prompt("#", "App.StartApp(\f" + file + "\f" + options + "\f" + intent);
+  }
+  startDebugServer() {
+    prompt("#", "App.StartDebugServer(");
+  }
+  startService(packageName: string, className: string) {
+    prompt("#", "App.StartService(\f" + packageName + "\f" + className);
+  }
+  stopApp(name: string) {
+    prompt("#", "App.StopApp(" + name);
+  }
+  stopDebugServer() {
+    prompt("#", "App.StopDebugServer(");
+  }
+  stopService() {
+    prompt("#", "App.StopService(");
+  }
+  sysExec(cmd: string, options: string, maxRead: string, timeout: string) {
+    return prompt(
+      "#",
+      "App.SysExec(\f" + cmd + "\f" + options + "\f" + maxRead + "\f" + timeout,
+    );
+  }
+  textToSpeech(
+    text: string,
+    pitch: string,
+    rate: string,
+    callback: Function,
+    stream: string,
+    locale: string,
+    engine: string,
+  ) {
+    prompt(
+      "#",
+      "App.TextToSpeech(\f" + text + "\f" + pitch + "\f" + rate + "\f" +
+        _Cbm(callback) + "\f" + stream + "\f" + locale + "\f" + engine,
+    );
+  }
+  toBack() {
+    prompt("#", "App.ToBack(");
+  }
+  toFront() {
+    prompt("#", "App.ToFront(");
+  }
+  translate(cancel: string, ok: string) {
+    prompt("#", "App.Translate(\f" + cancel + "\f" + ok);
+  }
+  unlock() {
+    prompt("#", "App.Unlock(");
+  }
+  unlockDrawer(side: string) {
+    prompt("#", "App.UnlockDrawer(\f" + side);
+  }
+  unpairBtDevice(address: string, callback: Function) {
+    prompt("#", "App.UnpairBtDevice(\f" + address + "\f" + _Cbm(callback));
+  }
+  unzipFile(src: string, dest: string, options: string) {
+    prompt("#", "App.UnzipFile(\f" + src + "\f" + dest + "\f" + options);
+  }
+  updateProgressBar(percent: string, options: string) {
+    prompt("#", "App.UpdateProgressBar(\f" + percent + "\f" + options);
+  }
+  updateUI(ms: number) {
+    prompt("#", "_DoEvents(\f" + ms);
+  }
+  uploadFile(url: string, file: string, name: string, callback: Function) {
+    prompt(
+      "#",
+      "App.UploadFile(\f" + url + "\f" + file + "\f" + name + "\f" +
+        _Cbm(callback),
+    );
+  }
+  uri2Path(uri: string, options: string) {
+    return prompt("#", "App.Uri2Path(\f" + uri + "\f" + options);
+  }
+  vibrate(pattern: string) {
+    prompt("#", "App.Vibrate(" + pattern);
+  }
+  wait(secs: number, doEvents: string) {
+    prompt("#", "App.Wait(\f" + secs + "\f" + doEvents);
+  }
+  wakeUp() {
+    prompt("#", "App.WakeUp(");
+  }
+  walkFolder(
+    path: string,
+    filter: string,
+    depth: number,
+    limit: number,
+    options: string,
+  ) {
+    return JSON.parse(
+      prompt(
+        "#",
+        "App.WalkFolder(\f" + path + "\f" + filter + "\f" + depth + "\f" +
+          limit + "\f" + options,
+      ),
+    );
+  }
+  wifiConnect(ssid: string, key: string) {
+    prompt("#", "App.WifiConnect(\f" + ssid + "\f" + key);
+  }
+  wifiScan(callback: Function, options: string) {
+    prompt("#", "App.WifiScan(\f" + _Cbm(callback) + "\f" + options);
+  }
+  writeFile(file: string, text: string, mode: string, encoding: string) {
+    prompt(
+      "#",
+      "App.WriteFile(\f" + file + "\f" + text + "\f" + mode + "\f" + encoding,
+    );
+  }
+  zipFile(src: string, dest: string, options: string) {
+    prompt("#", "App.ZipFile(\f" + src + "\f" + dest + "\f" + options);
+  }
+  zipFolder(src: string, dest: string, options: string) {
+    prompt("#", "App.ZipFile(\f" + src + "\f" + dest + "\f" + options);
+  }
 }
 
 /*
